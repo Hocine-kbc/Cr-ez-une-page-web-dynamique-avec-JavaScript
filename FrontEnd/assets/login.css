@@ -1,0 +1,80 @@
+/* Style de la section de connexion */
+#login {
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#login h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 30px;
+    color: #1D6154;
+    margin-bottom: 20px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#login-form label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    color: #3D3D3D;
+    text-align: left;
+}
+
+#login-form input {
+    height: 50px;
+    padding: 0 10px;
+    font-size: 1.2em;
+    border: 1px solid #B9C2CA;
+    border-radius: 5px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+
+
+#login-form button {
+  width: 179px;
+  height: 36px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: white;
+  background-color: #1D6154;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  margin: 0 auto; /* Cette ligne centre le bouton à l'intérieur du conteneur */
+  display: block; /* Nécessaire pour que margin auto fonctionne sur les boutons */
+ 
+}
+
+
+/* Supprime le soulignement du lien "login" */
+#login-button {
+    text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Garde la couleur du texte par défaut */
+}
+
+#login-form button:hover {
+    background-color: #0E4A3F;
+}
+#forgot-password {
+    display: block;
+    margin-top: 10px;
+    color: #1D6154;
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+	padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+#forgot-password:hover {
+    text-decoration: underline;
+}
+
+

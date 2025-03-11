@@ -1,0 +1,141 @@
+/* ////////////////////////////////// Style de la modale /////////////////////////////////////// */
+
+.modal {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fond légèrement plus sombre */
+    display: flex; /* Flexbox pour centrer le contenu */
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Niveau supérieur pour s'assurer qu'il soit au-dessus de tout */
+}
+
+.modal-content {
+    background-color: #f9f9f9; /* Couleur de fond plus douce */
+    padding: 80px;
+    border-radius: 12px; /* Coins légèrement arrondis */
+    width: 100%;
+    max-width: 600px; /* Augmentation de la largeur max */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour donner un effet d'élévation */
+    position: relative;
+    animation: fadeIn 0.2s ease-in-out; /* Animation d'apparition */
+  
+    
+}
+.modal-content h2{
+    font-size: 26px;
+    
+}
+
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #000; /* Couleur plus sombre au survol */
+}
+
+.modal-line {
+    border-top: 1px solid #dcdcdc; /* Couleur plus subtile */
+    margin: 20px 0;
+}
+
+
+.modal-footer {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px; /* Ajuste l'espacement */
+    padding-top: 20px;
+}
+
+.modal-line {
+    width: 420px;
+    height: 1px;
+    background-color: #B3B3B3;
+    margin: 20px 0; /* Ajoute un espace au-dessus et en dessous */
+}
+/* Bouton "Ajouter une photo" */
+.add-photo-btn {
+    width: 100%;
+    font-family: 'Syne';
+    max-width: 237px;
+    height: 36px;
+    background-color: #1D6154;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px; /* Position en bas */
+    left: 50%;
+    transform: translateX(-50%);
+}
+.add-photo-btn:hover {
+    background-color: #0E4A3F;
+}
+
+
+.modal-gallery {
+   
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 colonnes */
+    gap: 40px 15px;
+    padding: 10px;
+    max-height: 70vh; /* Limite la hauteur maximale à 70% de la vue */
+    overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+}
+
+
+.modal-gallery img {
+    width: 100%; /* S'adapte à la largeur de la colonne */
+    height: auto; /* Conserve les proportions de l'image */
+  
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Légère ombre pour un effet élégant */
+    object-fit: cover; /* Coupe l'image si elle dépasse les dimensions */
+    transition: transform 0.3s ease-in-out; /* Animation au survol */
+}
+
+.modal-gallery img:hover {
+    transform: scale(1.05); /* Zoom léger au survol */
+}
+
+.work-item {
+    position: relative; /* Permet de positionner l’icône par rapport à l’image */
+    display: inline-block; /* Garde la taille du conteneur autour de l’image */
+}
+
+.delete-work-button {
+    position: absolute;
+    top: 5px; /* Ajuste la position en haut */
+    right: 5px; /* Ajuste la position à droite */
+    width: 20px; /* Taille du bouton */
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent pour visibilité */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    border: none;
+}
+
+
+.delete-work-button img {
+    width: 100%;
+    height: 100%;
+}

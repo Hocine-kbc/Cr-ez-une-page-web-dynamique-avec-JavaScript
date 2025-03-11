@@ -1,0 +1,28 @@
+/* Bannière "Mode édition" */
+#edit-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 14px;
+    text-align: center; /* Centrer le texte horizontalement */
+    
+    
+}
+
+#edit-banner p {
+    margin: 0; /* Supprimer la marge par défaut */
+    display: flex;
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    gap: 10px; /* Espace entre l'icône et le texte */
+}
+
+#edit-banner img {
+    width: 16px; /* Taille de l'icône */
+    height: 16px;
+}

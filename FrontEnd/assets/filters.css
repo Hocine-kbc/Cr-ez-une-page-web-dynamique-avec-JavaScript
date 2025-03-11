@@ -1,0 +1,43 @@
+/* Conteneur des filtres */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espace entre les boutons */
+    margin: 20px 0; /* Marge en haut et en bas */
+    
+}
+
+/* Style de chaque bouton de filtre */
+.filters button {
+    width: auto; /* Largeur */
+    height: 37px; /* Hauteur */
+    border-radius: 60px; /* Bordures arrondies */
+    border: 1px solid #1D6154; /* Bordure de 1px */
+    background-color: white; /* Fond blanc */
+    color: #1D6154; /* Texte vert */
+    font-family: 'Syne', sans-serif; /* Police Syne */
+    font-size: 14px; /* Taille de police */
+    font-weight: 700; /* Texte en gras */
+    cursor: pointer; /* Curseur en forme de main */
+    
+	top:813px;
+	padding: 1px 20px 1px 20px;
+}
+
+/* Style au survol */
+.filters button:hover {
+    background-color: #1D6154; /* Fond vert */
+    color: white; /* Texte blanc */
+}
+
+/* Style du bouton actif */
+ .filters button .active {
+    background-color: #1D6154; /* Fond vert */
+    color: white; /* Texte blanc */
+    
+}
+.filters .active{
+    background-color:#1D6154;
+    color: white;
+}
+
