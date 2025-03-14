@@ -1,5 +1,6 @@
-import { fetchWorks, addWork } from './api.js';
-import { displayWorks } from './gallery.js';
+import { fetchWorks } from './api.js';
+
+console.log("Le fichier addproject.js est bien chargé !");
 
 // Récupérer les catégories depuis l'API
 export async function fetchCategories() {
@@ -7,26 +8,35 @@ export async function fetchCategories() {
         const response = await fetch('http://localhost:5678/api/categories');
         if (!response.ok) throw new Error('Erreur lors du chargement des catégories');
 
-        const categories = await response.json();
+        const responseData = await response.json();
         const categorySelect = document.getElementById('category');
 
         // Réinitialiser les options existantes
         categorySelect.innerHTML = '<option value="" disabled selected>Choisir une catégorie</option>';
 
         // Ajouter les options des catégories
-        categories.forEach(category => {
+        responseData.forEach(category => {
             const option = document.createElement('option');
             option.value = category.id;
             option.textContent = category.name;
             categorySelect.appendChild(option);
         });
+
     } catch (error) {
         console.error(error);
         alert('Impossible de charger les catégories.');
     }
 }
 
+const previewImage = document.getElementById("preview-image");
+const uploadContent = document.querySelector(".upload-content");
+const uploadButton = document.getElementById("upload-button");
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Gérer l'envoi du formulaire
+
+
 export async function submitForm(event) {
     event.preventDefault();
 
@@ -68,14 +78,27 @@ export async function submitForm(event) {
             body: formData,
         });
 
-        if (!response.ok) throw new Error("Erreur lors de l'ajout du projet");
-
-        const newWork = await response.json(); // Récupérer l'image ajoutée depuis la réponse API
+        if (!response.ok) {
+            const errorResponse = await response.json();
+            console.error("Erreur API :", errorResponse);
+            throw new Error(errorResponse.message || "Erreur lors de l'ajout du projet");
+        }
 
         alert("Projet ajouté avec succès !");
 
-        // Rediriger vers la page d'accueil
-        window.location.href = "index.html"; // Rafraîchir la page et retourner à l'accueil
+        // Réinitialiser le formulaire
+        fileInput.value = "";
+        titleInput.value = "";
+        categorySelect.value = "";
+
+        // Réinitialiser l'aperçu de l'image
+        previewImage.src = "";
+        previewImage.style.display = "none";
+        uploadContent.style.display = "block"; // Réafficher l'interface d'upload
+        uploadButton.style.display = "block"; // Réafficher le bouton d'upload
+
+        // Recharger la galerie pour afficher la nouvelle image
+        await fetchWorks();
 
     } catch (error) {
         console.error(error);
@@ -88,8 +111,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageInput = document.getElementById("image");
     const previewImage = document.getElementById("preview-image");
     const uploadContent = document.querySelector(".upload-content");
-    const form = document.getElementById("add-project-form");
     const uploadButton = document.getElementById("upload-button");
+
+    // Attacher l'événement submit une seule fois
+    const form = document.getElementById("add-project-form");
+    form.removeEventListener("submit", submitForm); // Supprimer l'ancien écouteur
+    form.addEventListener("submit", submitForm); // Ajouter le nouvel écouteur
 
     // Gestion de l'upload d'image
     imageInput.addEventListener("change", function (event) {

@@ -1,5 +1,6 @@
 import { fetchWorks } from "./api.js";
 
+
 export async function displayProjects(categoryId = "all") {
     const gallery = document.querySelector(".gallery");
 
@@ -36,7 +37,7 @@ export async function displayProjects(categoryId = "all") {
 export function displayWorks(works) {
     const gallery = document.querySelector(".gallery");
     if (!gallery) {
-        console.error("❌ Aucun élément .gallery trouvé !");
+        console.error(" Aucun élément .gallery trouvé !");
         return;
     }
 

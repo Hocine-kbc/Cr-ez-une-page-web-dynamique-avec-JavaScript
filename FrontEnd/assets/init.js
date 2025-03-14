@@ -1,6 +1,9 @@
 import { displayProjects } from "./gallery.js";
 import { displayFilters } from "./filters.js";
-import { setupModal } from "./modal.js"; // Import correct de setupModal
+import { setupModal } from "./modal.js"; 
+
+
+// Vérifier si la page est chargée
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Page chargée :", window.location.pathname);
