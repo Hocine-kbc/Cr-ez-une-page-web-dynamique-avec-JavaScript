@@ -1,10 +1,11 @@
 import { fetchWorks, deleteWork, addWork, fetchCategories } from './api.js';
 import { displayWorks } from './gallery.js';
 
-
-
 // Gestion de la modale
 export function setupModal() {
+
+    console.log("Formulaire soumis !"); // Vérification
+    
     const editButton = document.getElementById('edit-projects-button');
     console.log("Bouton 'Modifier' trouvé :", editButton); // Debug
 
@@ -55,6 +56,7 @@ export function setupModal() {
         }
     });
 }
+
 async function populateCategoryDropdown() {
     const categorySelect = document.getElementById("category");
     
@@ -112,3 +114,52 @@ async function displayModalGallery() {
         });
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const fileInput = document.getElementById("image");
+    const previewImage = document.getElementById("preview-image");
+    const uploadLabel = document.querySelector(".upload-label");
+
+    fileInput.addEventListener("change", function (event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                previewImage.src = e.target.result; // Affiche l'image sélectionnée
+                previewImage.style.display = "block"; // Rend l'image visible
+                uploadLabel.style.display = "none"; // Cache le bouton et l'icône
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Rendre la modale invisible au chargement de la page
+    const editModal = document.getElementById("edit-modal");
+    const addProjectModal = document.getElementById("add-project-modal");
+
+    if (editModal) {
+        editModal.style.display = "none";
+    }
+
+    if (addProjectModal) {
+        addProjectModal.style.display = "none";
+    }
+
+    const backToGallery = document.getElementById("back-to-gallery");
+
+    if (backToGallery && addProjectModal && editModal) {
+        backToGallery.addEventListener("click", function () {
+            if (editModal.innerHTML.trim() !== "") {
+                addProjectModal.style.display = "none";
+                editModal.style.display = "flex";
+            } else {
+                console.warn("⚠️ La modale 'edit-modal' est vide !");
+            }
+        });
+    } else {
+        console.error("Erreur : Un des éléments modaux est introuvable dans le DOM.");
+    }
+});

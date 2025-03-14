@@ -91,9 +91,9 @@
 
 
 <!-- Modale d'édition -->
-<div id="edit-modal" class="modal" style="display: none;">
+<div id="edit-modal" class="modal" >
     <div class="modal-content">
-        <span class="close-modal">&times;</span>
+        <span class="close-modal"><img src="assets\icons\xmark.svg"></span>
         <h2>Galerie photo</h2>
         <div id="modal-gallery" class="modal-gallery">
             <!-- Les projets seront ajoutés dynamiquement ici -->
@@ -106,29 +106,63 @@
     </div>
 </div>
 
+
 <!-- Modale d'ajout -->
 <div id="add-project-modal" class="modal">
     <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2>Ajout d'un projet</h2>
+        <span class="close-modal"><img src="assets/icons/xmark.svg"></span>
+        <!-- Flèche de retour -->
+        <span id="back-to-gallery" class="back-arrow"><img src="assets/icons/arrow-left.svg"></span>
+        <h2>Ajout photo</h2>
+        
+        
         <form id="add-project-form">
-            <label for="image">Image :</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
-            <label for="title">Titre :</label>
-            <input type="text" id="title" name="title" placeholder="Entrez un titre" required>
-            <label for="category">Catégorie :</label>
-            <select id="category" name="category" required>
-                <option value="" disabled selected>Choisir une catégorie</option>
-            </select>
-            <button type="submit" class="add-photo-btn">Valider</button>
+    
+            <div class="form-container">
+                <!-- Champ pour uploader une image -->
+                <div class="form-group">
+                    <div class="upload-container">
+                        <input type="file" id="image" name="image" accept="image/*" required style="display: none;">
+                        <label class="upload-label">
+                            <div class="upload-content"> 
+                                <div class="upload-icon">
+                                    <img id="upload-icon" src="assets/icons/image-icon.svg" alt="Icône d'image">
+                                </div>
+                                <button type="button" class="upload-button" id="upload-button">+ Ajouter une photo</button>
+                                <p class="upload-text">jpg, png : 4mo max</p>
+                            </div>
+                        </label>
+                        <!-- Image d'aperçu cachée au départ -->
+                        <img id="preview-image" src="" alt="Aperçu de l'image" style="display: none; max-width: 100%; height: 100%;">
+                    </div>
+                </div>
+
+                <!-- Champ pour le titre du projet -->
+                <div class="form-group">
+                    <label for="title">Titre :</label>
+                    <input type="text" id="title" name="title" placeholder="Entrez un titre" required>
+                </div>
+            
+                <!-- Champ pour choisir une catégorie -->
+                <div class="form-group">
+                    <label for="category">Catégorie :</label>
+                    <select id="category" name="category" required>
+                        <option value="" disabled selected>Choisir une catégorie</option>
+                    </select>
+                </div>
+            
+                <!-- Bouton de soumission -->
+                <button type="submit" class="add-photo-btn">Valider</button>
+            </div>
         </form>
     </div>
 </div>
 
+
 <script src="./assets/auth.js"></script>
 <script type="module" src="./assets/init.js"></script>
-
-
+<script src="assets/modal.js" type="module"></script>
+<script src="assets/addProject.js" type="module"></script>
 
 </body>
 </html>
