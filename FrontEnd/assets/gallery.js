@@ -1,5 +1,8 @@
 import { fetchWorks } from "./api.js";
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////// Fonction d'affichage des projets en fonction de la catégorie sélectionnée ////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export async function displayProjects(categoryId = "all") {
     const gallery = document.querySelector(".gallery");
@@ -10,7 +13,7 @@ export async function displayProjects(categoryId = "all") {
         return;
     }
 
-    gallery.innerHTML = ""; // Nettoyer la galerie
+    gallery.innerHTML = ""; // Nettoyer la galerie avat d'ajouter de nouveaux elements 
 
     const projects = await fetchWorks();
 
@@ -18,7 +21,8 @@ export async function displayProjects(categoryId = "all") {
     const filteredProjects = categoryId === "all"
         ? projects
         : projects.filter(project => project.categoryId == categoryId);
-
+    
+    //generer et inserer les element pour chaque projet
     filteredProjects.forEach(project => {
         const projectElement = document.createElement("figure");
         projectElement.innerHTML = `
@@ -29,10 +33,9 @@ export async function displayProjects(categoryId = "all") {
     });
 }
 
-
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////// Fonction d'affichage des œuvres (works) dans la galerie //////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 export function displayWorks(works) {
     const gallery = document.querySelector(".gallery");
@@ -40,7 +43,8 @@ export function displayWorks(works) {
         console.error(" Aucun élément .gallery trouvé !");
         return;
     }
-
+    
+    //gerer les inserer les element HTML pour chaque projet
     gallery.innerHTML = works.map(work => `
         <figure>
             <img src="${work.imageUrl}" alt="${work.title}">

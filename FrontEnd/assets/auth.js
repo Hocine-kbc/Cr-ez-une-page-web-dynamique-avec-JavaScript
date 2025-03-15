@@ -35,7 +35,7 @@ function logout() {
     window.location.href = "index.html"; // Rediriger vers la page d'accueil
 }
 
-/////////////////////////////////////////////CHECK LOGIN //////////////////////////////////
+///////////////////////////////////////////// CHECK LOGIN /////////////////////////////////////////////
 
 
 // Vérifier si l'utilisateur est connecté
@@ -59,10 +59,6 @@ function checkLogin() {
         if (editBanner) editBanner.style.display = "block";
         if (editButton) editButton.style.display = "block";
     } else {
-        //console.log("Utilisateur non connecté. Transformation du bouton en Login.");
-        //authButton.textContent = "Login"; // Changer le texte en "Login"
-       // authButton.onclick = null; // Supprimer le gestionnaire de déconnexion
-        //authButton.href = "login.html"; // Rediriger vers la page de connexion
 
         // Masquer les éléments en mode édition
         if (editBanner) editBanner.style.display = "none";

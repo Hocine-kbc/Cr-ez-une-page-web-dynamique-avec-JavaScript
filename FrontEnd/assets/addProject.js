@@ -1,8 +1,19 @@
 import { fetchWorks } from './api.js';
+import { displayModalGallery } from './modal.js';
+import { displayWorks } from './gallery.js';
 
 console.log("Le fichier addproject.js est bien chargé !");
 
-// Récupérer les catégories depuis l'API
+const previewImage = document.getElementById("preview-image");
+const uploadContent = document.querySelector(".upload-content");
+const uploadLabel = document.querySelector(".upload-label");
+const uploadButton = document.getElementById("upload-button");
+
+//////////////////////////////////////////////////////////////////////////////////////
+///////////////////////// Récupération des catégories depuis l'API ///////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
+
 export async function fetchCategories() {
     try {
         const response = await fetch('http://localhost:5678/api/categories');
@@ -28,14 +39,11 @@ export async function fetchCategories() {
     }
 }
 
-const previewImage = document.getElementById("preview-image");
-const uploadContent = document.querySelector(".upload-content");
-const uploadButton = document.getElementById("upload-button");
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// Gérer l'envoi du formulaire
-
+////////////////////// Gérer l'envoi du formulaire  ////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export async function submitForm(event) {
     event.preventDefault();
@@ -95,10 +103,14 @@ export async function submitForm(event) {
         previewImage.src = "";
         previewImage.style.display = "none";
         uploadContent.style.display = "block"; // Réafficher l'interface d'upload
+        uploadLabel.style.display = "block"; // Réafficher le label
         uploadButton.style.display = "block"; // Réafficher le bouton d'upload
 
         // Recharger la galerie pour afficher la nouvelle image
-        await fetchWorks();
+        displayModalGallery(); // Rafraîchir la modale
+        displayWorks(await fetchWorks()); // Rafraîchir la galerie principale
+        document.getElementById('add-project-modal').style.display = 'none';
+        document.getElementById('edit-modal').style.display = 'flex'; // Réafficher la modale d'édition
 
     } catch (error) {
         console.error(error);
@@ -106,12 +118,15 @@ export async function submitForm(event) {
     }
 }
 
-// Gestion des interactions du DOM
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////// Gestion des interactions du DOM //////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 document.addEventListener("DOMContentLoaded", function () {
     const imageInput = document.getElementById("image");
-    const previewImage = document.getElementById("preview-image");
-    const uploadContent = document.querySelector(".upload-content");
-    const uploadButton = document.getElementById("upload-button");
+      
 
     // Attacher l'événement submit une seule fois
     const form = document.getElementById("add-project-form");
@@ -134,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 uploadButton.style.display = "none"; // Masquer le bouton d'upload
             };
 
-            reader.readAsDataURL(file);
+             reader.readAsDataURL(file);
         }
     });
 

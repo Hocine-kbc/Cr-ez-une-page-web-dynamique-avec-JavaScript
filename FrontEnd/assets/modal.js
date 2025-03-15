@@ -1,4 +1,4 @@
-import { fetchWorks, deleteWork, addWork, fetchCategories } from './api.js';
+import { fetchWorks, deleteWork, fetchCategories } from './api.js';
 import { displayWorks } from './gallery.js';
 
 // Gestion de la modale
@@ -40,21 +40,7 @@ export function setupModal() {
         });
     });
 
-    // Gérer l'ajout d'un nouveau projet
-    document.getElementById('add-project-form')?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-
-        const newWork = await addWork(formData);
-        if (newWork) {
-            displayModalGallery(); // Rafraîchir la modale
-            displayWorks(await fetchWorks()); // Rafraîchir la galerie principale
-            document.getElementById('add-project-modal').style.display = 'none';
-            document.getElementById('edit-modal').style.display = 'flex';
-        } else {
-            alert('Erreur lors de l\'ajout du projet');
-        }
-    });
+   
 }
 
 async function populateCategoryDropdown() {
@@ -92,7 +78,7 @@ document.getElementById("open-add-project-modal")?.addEventListener("click", () 
 });
 
 // Afficher les projets dans la modale
-async function displayModalGallery() {
+export async function displayModalGallery() {
     const works = await fetchWorks();
     const modalGallery = document.getElementById('modal-gallery');
     modalGallery.innerHTML = works.map(work => `

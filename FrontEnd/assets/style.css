@@ -121,7 +121,6 @@ li:hover {
 
 #introduction article {
 	flex: 1;
-    
 
 }
 #introduction h2 {
@@ -145,11 +144,6 @@ li:hover {
 	margin-bottom:0;
     font-family: 'syne';
     color: #1D6154;
-  
-    
-
-    
-    
 
 }
 .gallery {
@@ -243,6 +237,9 @@ footer nav ul {
     gap: 5px; /* Espace entre l'icône et le texte */
     font-size: 14px; /* Taille du texte */
     padding: 0; /* Pas de padding */
+}
+#edit-projects-button:hover{
+	font-weight: bold; /* Rend le texte gras */
 }
 
 /* Styles pour l'icône dans le bouton "Modifier" */
