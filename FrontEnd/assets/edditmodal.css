@@ -65,6 +65,7 @@
     font-weight: 400;
     font-size: 14px;
     box-shadow: 0px 4px 14px 0px #00000017;
+   
 }
 
 
@@ -181,4 +182,10 @@
 
 .back-arrow:hover {
     text-decoration: underline;
+}
+.modal-line-add {
+    width: 450px;
+    height: 1px;
+    background-color: #B3B3B3;
+    margin: 60px 0 20px 0; /* Ajoute un espace au-dessus et en dessous */
 }
