@@ -92,7 +92,7 @@ export async function submitForm(event) {
             throw new Error(errorResponse.message || "Erreur lors de l'ajout du projet");
         }
 
-        alert("Projet ajouté avec succès !");
+        //alert("Projet ajouté avec succès !");
 
         // Réinitialiser le formulaire
         fileInput.value = "";
